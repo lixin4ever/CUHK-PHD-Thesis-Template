@@ -1,0 +1,195 @@
+\documentclass[11pt]{gsasthesis} % 10,11 and 12pt fonts allowed
+
+%%%%%%%%%%%%%%%% PACKAGES YOU PROBABLY WANT %%%%%%%%%%%%%%%%
+% Include packages you want. The gsasthesis style file already includes
+% packages "setspace" and "tocbibind".
+
+\usepackage{etex} % extend the number of registers
+
+% GSAS: "all margins should be at least 1 inch."
+\usepackage[margin={1.2in}]{geometry}
+% If you want asymmetric margins for two-sided documents, use the "twoside"
+% option, as in
+% \usepackage[top=1in,bottom=1.5in,left=1in,right=1.5in,twoside]{geometry} The
+% left and right options become inner and outer margins The default horizontal
+% latex margin ratio is 2:3. The default vertical top:bottom margin ratio is 2:3
+% also. You can also set it directly by passing the hmarginratio option to the
+% geometry package, as in
+% \usepackage[top=1in,left=1in,vmarginratio=2:3,hmarginratio=2:5,twoside]{geometry}
+
+% Appendix package. Not necessary, but it does make managing appendices easier
+\usepackage[titletoc]{appendix}
+
+%%%%%%%%%%%%%%%% PACKAGES MAY WANT %%%%%%%%%%%%%%%%
+
+% sideways tables and figures
+\usepackage{rotating}
+
+% tables that spill over multiple pages
+\usepackage{longtable}
+
+% references
+%\usepackage{natbib}
+
+\usepackage{comment}
+
+\usepackage{multirow, booktabs}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{makecell}
+
+\usepackage{enumitem}
+
+\usepackage{graphicx}
+\usepackage{soul}
+\usepackage[normalem]{ulem}
+\usepackage{subcaption}
+
+\newcolumntype{L}[1]{>{\raggedright\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+\newcolumntype{C}[1]{>{\raggedright\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+
+\usepackage{CJKutf8}
+\usepackage{pifont}
+\newcommand{\xmark}{\ding{55}}
+
+\usepackage{rotating}
+\usepackage{pdflscape}
+
+% fonts that are nicer than defaults
+\usepackage[sc]{mathpazo}
+\usepackage{courier}
+
+% Use 8-bit encoding that has 256 glyphs, pretty please
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+
+% babel is required for blindtext, which generates random text
+\usepackage[english]{babel}
+\usepackage{blindtext}
+
+% math support
+\usepackage{amsmath}
+
+% Slightly tweak font spacing for aesthetics
+\usepackage{microtype}
+
+
+
+% You need the footmisc package with the stable option if you want to have
+% footnotes inside section titles, for example to say that a particular chapter
+% has been co-authored with someone. The multiple option ensures that there is a
+% comma between two consecutive footnotes
+\usepackage[stable,multiple]{footmisc}
+
+
+% Nicer captions
+\RequirePackage[font=small,format=plain,labelfont=bf,textfont=it]{caption}
+\addtolength{\abovecaptionskip}{1ex}
+\addtolength{\belowcaptionskip}{1ex}
+
+
+%%%%%%%%%%%%%%%% COMPULSORY FIELDS %%%%%%%%%%%%%%%%
+
+\title{Title of Your Ph.D. Thesis} % needs to match title on DAC
+\author{Your Name} % full name as it appears on your GSAS record, needs
+                          % to match name on DAC
+\degreename{Doctor of Philosophy}
+\degreefield{Systems Engineering and Engineering Management} % Official name of subject as listed in GSAS
+                                % handbook
+\department{Systems Engineering and Engineering Management} % official name of department
+\degreemonth{January} % Month of Defense (i.e. month when DAC was signed)
+\degreeyear{2021} % Year the DAC was signed
+\principaladvisor{Professor AA}
+
+% Optionally, you can add a second advisor, but you can't have three
+%\secondadvisor{Professor George Secondary}
+
+
+
+\begin{document}
+
+%%%%%%%%%%%%%%%% FRONTMATTER %%%%%%%%%%%%%%%%
+
+\pagenumbering{roman} % GSAS wants roman page numbers for frontmatter
+
+% the following four pages are required in that order. The first two pages are
+% not allowed to have page numbers, this is taken care of in the class file.
+\thesistitlepage
+%\copyrightpage
+\committeepage
+\begin{abstract}
+\end{abstract}
+
+\begin{cabstract}
+
+
+\end{cabstract}
+
+% Center headings for table of contents, LOT, and LOF and make them smaller so
+% that "Abstract", "Acknowledgments" and "Contents" all look alike. Comment out
+% if you want the default. If you want more control, use the "tocloft" package.
+\renewcommand{\contentsname}{\protect\centering\protect\Large Contents}
+\renewcommand{\listtablename}{\protect\centering\protect\Large List of Tables}
+\renewcommand{\listfigurename}{\protect\centering\protect\Large List of Figures}
+
+\tableofcontents % Table of contents
+
+% The rest of the front matter: Lists of tables, figures, dedication and
+% acknowledment is optional. Comment out whatever you don't like
+\listoftables
+\listoffigures
+\begin{acknowledgments}
+  Acknowledgement here.   
+  
+  %I would like to thank my thesis committee members for their valuable and constructive comments. Furthermore, I want to express my gratitude to the professors in the Department of Systems Engineering and Engineering Management.  
+\end{acknowledgments}
+%\begin{dedication}
+%  To my parents and my girl friend. 
+%\end{dedication}
+
+
+%%%%%%%%%%%%%%%% MAIN BODY %%%%%%%%%%%%%%%%
+\pagenumbering{arabic} % reset page numbering and switch to arabic
+
+% Introductory chapter. Comment out if you don't have an intro chapter, but I
+% think most committees expect you to have one.
+% Don't number the intro chapter, but add to to the table of contents
+%\addcontentsline{toc}{chapter}{Introduction}
+\chapter{Introduction}\label{ch:intro}
+\input{chapters/intro}
+
+\chapter{Literature Review}\label{ch:background}
+\input{chapters/background}
+
+\chapter{Chapter 3}\label{ch:ate}
+
+\chapter{Chapter 4}
+
+\chapter{Chapter 5}
+
+\chapter{...}
+
+
+
+%%%%%%%%%%%%%%%% BACK MATTER %%%%%%%%%%%%%%%%
+
+% Put appendices, bibliography, and supplemental materials here
+
+% The bibliography may be single spaced within each entry, but must be
+% double-spaced between each entry. Most bibliography styles leave space between
+% entries, so that shouldn't be a problem.
+\begin{singlespacing}
+  % I like "References" better than "Bibliography"
+  \renewcommand{\bibname}{References}
+
+  % Any bibliohgraphy style that leaves space between entries is fine
+  \bibliographystyle{acl_natbib}
+  %\bibliographystyle{ecca}
+  \bibliography{references}
+\end{singlespacing}
+
+% Appendices from all chapters should go at the end
+%\input{appendix}
+
+\end{document}
